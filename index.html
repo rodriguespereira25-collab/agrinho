@@ -1,0 +1,709 @@
+DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Forte & Sustentável</title>
+    <style>
+        /* Configurações Gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho e Menu */
+        header {
+            background-color: #1b4332;
+            color: #fff;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #52b788;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #52b788;
+        }
+
+        /* Banner Principal */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            height: 60vh;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+        }
+
+        /* Seções de Conteúdo */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #1b4332;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #52b788;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Agro Sustentável Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid #52b788;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: #1b4332;
+            margin-bottom: 1rem;
+        }
+
+        /* Destaque Soja */
+        .soja-section {
+            background-color: #e9ecef;
+            padding: 5rem 2rem;
+        }
+
+        .soja-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .soja-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .soja-content h2 {
+            color: #1b4332;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .soja-content p {
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        .soja-img {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .soja-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Formulário de Contato */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #1b4332;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #52b788;
+        }
+
+        .btn-submit {
+            background-color: #2d6a4f;
+            color: #fff;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #1b4332;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #1b4332;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .soja-wrapper {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">AgroSustentável</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#pilares">Pilares</a></li>
+                <li><a href="#soja">A Força da Soja</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <h1>O Agro é Forte. O Agro é sustentavel.</h1>
+        <p>Alimentando o mundo com tecnologia, respeito ao meio ambiente e produtividade responsável.</p>
+    </section>
+
+    <section id="pilares" class="container">
+        <h2 class="section-title">Pilares da Sustentabilidade</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Tecnologia no Campo</h3>
+                <p>O uso de drones, sensores e agricultura de precisão permite otimizar recursos, reduzindo o desperdício de água e defensivos agrícolas.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Plantio Direto</h3>
+                <p>Técnica que protege o solo contra erosões, mantém a umidade da terra e reduz radicalmente as emissões de carbono na atmosfera.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Preservação e Código Florestal</h3>
+                <p>O produtor brasileiro é um dos que mais preserva no mundo, mantendo matas ciliares e reservas legais intocadas dentro de suas propriedades.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="soja" class="soja-section">
+        <div class="soja-wrapper">
+            <div class="soja-content">
+                <h2>A Cultura da Soja: Potência Econômica e Inovação</h2>
+                <p>A soja é a principal cultura do agronegócio brasileiro, colocando o país como o maior produtor e exportador mundial do grão. Mais do que movimentar a economia, a soja moderna carrega o DNA da sustentabilidade.</p>
+                <p>Graças à ciência brasileira, técnicas como a <strong>Fixação Biológica de Nitrogênio (FBN)</strong> eliminam a necessidade de fertilizantes nitrogenados químicos, poupando bilhões de dólares e evitando toneladas de poluentes.</p>
+                <p>Hoje, o cultivo da soja expande-se através da recuperação de pastagens degradadas, garantindo que o aumento da produção aconteça sem a necessidade de novos desmatamentos.</p>
+            </div>
+            <div class="soja-img">
+                <img src="">
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="container">
+        <h2 class="section-title">Fale Conosco</h2>
+        <div class="contact-form">
+            <form onsubmit="enviarFormulario(event)">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" required placeholder="Seu nome completo">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" required placeholder="seu.email@exemplo.com">
+                </div>
+                <div class="form-group">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" rows="5" required placeholder="Como podemos juntos construir um agro mais forte?"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Enviar Mensagem</button>
+            </form>
+        </div>
+    </secDOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Forte & Sustentável</title>
+    <style>
+        /* Configurações Gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho e Menu */
+        header {
+            background-color: #1b4332;
+            color: #fff;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #52b788;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #52b788;
+        }
+
+        /* Banner Principal */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            height: 60vh;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+        }
+
+        /* Seções de Conteúdo */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #1b4332;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #52b788;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Agro Sustentável Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid #52b788;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: #1b4332;
+            margin-bottom: 1rem;
+        }
+
+        /* Destaque Soja */
+        .soja-section {
+            background-color: #e9ecef;
+            padding: 5rem 2rem;
+        }
+
+        .soja-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .soja-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .soja-content h2 {
+            color: #1b4332;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .soja-content p {
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        .soja-img {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .soja-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Formulário de Contato */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #1b4332;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #52b788;
+        }
+
+        .btn-submit {
+            background-color: #2d6a4f;
+            color: #fff;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #1b4332;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #1b4332;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .soja-wrapper {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">AgroSustentável</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#pilares">Pilares</a></li>
+                <li><a href="#soja">A Força da Soja</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <h1>O Agro é Forte. O Agro é sustentavel.</h1>
+        <p>Alimentando o mundo com tecnologia, respeito ao meio ambiente e produtividade responsável.</p>
+    </section>
+
+    <section id="pilares" class="container">
+        <h2 class="section-title">Pilares da Sustentabilidade</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Tecnologia no Campo</h3>
+                <p>O uso de drones, sensores e agricultura de precisão permite otimizar recursos, reduzindo o desperdício de água e defensivos agrícolas.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Plantio Direto</h3>
+                <p>Técnica que protege o solo contra erosões, mantém a umidade da terra e reduz radicalmente as emissões de carbono na atmosfera.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Preservação e Código Florestal</h3>
+                <p>O produtor brasileiro é um dos que mais preserva no mundo, mantendo matas ciliares e reservas legais intocadas dentro de suas propriedades.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="soja" class="soja-section">
+        <div class="soja-wrapper">
+            <div class="soja-content">
+                <h2>A Cultura da Soja: Potência Econômica e Inovação</h2>
+                <p>A soja é a principal cultura do agronegócio brasileiro, colocando o país como o maior produtor e exportador mundial do grão. Mais do que movimentar a economia, a soja moderna carrega o DNA da sustentabilidade.</p>
+                <p>Graças à ciência brasileira, técnicas como a <strong>Fixação Biológica de Nitrogênio (FBN)</strong> eliminam a necessidade de fertilizantes nitrogenados químicos, poupando bilhões de dólares e evitando toneladas de poluentes.</p>
+                <p>Hoje, o cultivo da soja expande-se através da recuperação de pastagens degradadas, garantindo que o aumento da produção aconteça sem a necessidade de novos desmatamentos.</p>
+            </div>
+            <div class="soja-img">
+                <img src="">
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="container">
+        <h2 class="section-title">Fale Conosco</h2>
+        <div class="contact-form">
+            <form onsubmit="enviarFormulario(event)">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" required placeholder="Seu nome completo">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" required placeholder="seu.email@exemplo.com">
+                </div>
+                <div class="form-group">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" rows="5" required placeholder="Como podemos juntos construir um agro mais forte?"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Enviar Mensagem</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 AgroSustentável. Todos os direitos reservados. Cultivando o futuro de forma responsável.</p>
+    </footer>
+
+    <script>
+        function enviarFormulario(event) {
+            event.preventDefault(); // Impede a página de recarregar
+            
+            // Pega os valores preenchidos
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+
+            // Simula o envio do formulário de forma funcional
+            alert(`Obrigado pelo contato, ${nome}! Suas informações foram enviadas com sucesso. Responderemos em breve no e-mail: ${email}`);
+            
+            // Limpa o formulário
+            document.getElementById('nome').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('mensagem').value = '';
+        }
+    </script>
+</body>
+</html>tion>
+
+    <footer>
+        <p>&copy; 2026 AgroSustentável. Todos os direitos reservados. Cultivando o futuro de forma responsável.</p>
+    </footer>
+
+    <script>
+        function enviarFormulario(event) {
+            event.preventDefault(); // Impede a página de recarregar
+            
+            // Pega os valores preenchidos
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+
+            // Simula o envio do formulário de forma funcional
+            alert(`Obrigado pelo contato, ${nome}! Suas informações foram enviadas com sucesso. Responderemos em breve no e-mail: ${email}`);
+            
+            // Limpa o formulário
+            document.getElementById('nome').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('mensagem').value = '';
+        }
+    </script>
+</body>
+</html>
